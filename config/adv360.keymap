@@ -10,14 +10,32 @@
         #include "macros.dtsi"
       #include "version.dtsi"
 
-        hm: homerow_mods {
+        hm_l: hm_l {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick_tap_ms = <175>;
-            flavor = "tap-preferred";
+            label = "HM_L";
             bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 7 8 9 10 11 12 13 21 22 23 24 25 26 27 38 39 40 41 42 43 44 45 54 55 56 57 58 59 69 70 71 72 73 74 75 21 22 23 24 25 26 27 37 38 39 40 41 42 43 44 45 53 54 55 56 57 58 59 68 69 70 71 72 73 74 75>;
+        };
+
+        hm_r: hm_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_R";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 35 36 46 47 48 49 50 51 52 60 61 62 63 64 65 66 67>;
         };
     };
 
@@ -27,11 +45,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp ESCAPE  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5  &tog 0                                                                         &mo 2        &kp N6  &kp N7         &kp N8     &kp N9    &kp N0    &kp EQUAL
-&kp TAB     &kp Q      &kp W     &kp E     &kp R     &kp T   &none                                                                          &none        &kp Y   &kp U          &kp I      &kp O     &kp P     &kp MINUS
-&kp LCTRL   &kp A      &kp S     &kp D     &kp F     &kp G   &none           &kp LCMD       &kp LALT          &kp RIGHT_ALT  &kp RIGHT_ALT  &none        &kp H   &kp J          &kp K      &kp L     &kp SEMI  &kp SQT
-&kp GRAVE   &kp Z      &kp X     &kp C     &kp V     &kp B                                  &kp HOME          &kp PG_UP                                  &kp N   &kp M          &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
-&mo 2       &kp GRAVE  &kp CAPS  &kp LEFT  &kp LCMD          &kp LEFT_SHIFT  &kp BACKSPACE  &kp LEFT_ALT      &kp RCMD       &kp ENTER      &lt 1 SPACE          &kp RIGHT_ALT  &kp DOWN   &kp LBKT  &kp RBKT  &mo 1
+&kp ESCAPE  &kp N1  &kp N2        &kp N3            &kp N4    &kp N5  &tog 0                                                        &mo 2        &kp N6  &kp N7         &kp N8             &kp N9        &kp N0    &kp EQUAL
+&kp TAB     &kp Q   &kp W         &kp E             &kp R     &kp T   &none                                                         &none        &kp Y   &kp U          &kp I              &kp O         &kp P     &kp MINUS
+&kp LCTRL   &kp A   &hm_l LCMD S  &hm_l LEFT_ALT D  &kp F     &kp G   &none           &none          &none      &none    &none      &none        &kp H   &kp J          &hm_r RIGHT_ALT K  &hm_r RCMD L  &kp SEMI  &kp SQT
+&kp GRAVE   &kp Z   &kp X         &kp C             &kp V     &kp B                                  &none      &none                            &kp N   &kp M          &kp COMMA          &kp DOT       &kp FSLH  &kp BACKSLASH
+&mo 2       &none   &none         &none             &kp LCMD          &kp LEFT_SHIFT  &kp BACKSPACE  &none      &kp DEL  &kp ENTER  &lt 1 SPACE          &kp RIGHT_ALT  &none              &kp LBKT      &kp RBKT  &mo 1
             >;
         };
 
